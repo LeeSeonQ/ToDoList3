@@ -15,9 +15,15 @@ struct List: Codable {
     var isCompleted: Bool
 }
 
+struct CompleteList: Codable {
+    var title: String
+    var date: Date?
+}
+
 struct Profile: Codable {
     var userAge: Int
     var password: String
     var nickName: String
     var image: String
 }
+

@@ -10,7 +10,7 @@ import UIKit
 class ToDoListViewController: UIViewController {
 
     private let dataManager = DataManager.shared
-    private let tableView = UITableView()
+    private let toDoListTableView = UITableView()
     
     private var addListButton = UIBarButtonItem(barButtonSystemItem: .add, target: ToDoListViewController.self, action: #selector(addListButtonTapped))
 
@@ -18,24 +18,27 @@ class ToDoListViewController: UIViewController {
 
     override func viewDidLoad() {
            super.viewDidLoad()
-           tableView.register(ToDoListTableViewCell.self, forCellReuseIdentifier: "ToDoListCell")
+        toDoListTableView.register(ToDoListTableViewCell.self, forCellReuseIdentifier: "ToDoListCell")
 
            view.backgroundColor = .white
 
-           tableView.delegate = self
-           tableView.dataSource = self
+        toDoListTableView.delegate = self
+        toDoListTableView.dataSource = self
         
         addListButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addListButtonTapped))
         navigationItem.rightBarButtonItem = addListButton
         
            setUpUI()
+        
+        
        }
 
     func setUpUI() {
-        view.addSubview(tableView)
+        
+        view.addSubview(toDoListTableView)
         navigationItem.rightBarButtonItem = addListButton
         
-        tableView.snp.makeConstraints {
+        toDoListTableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
         
@@ -70,7 +73,7 @@ class ToDoListViewController: UIViewController {
                    self.dataManager.saveList(lists)
                    
                    print("저장된 값: \(listTitle), 날짜: \(currentDate)")
-                   self.tableView.reloadData()
+                   self.toDoListTableView.reloadData()
                }
            }
            alertController.addAction(saveAction)
@@ -89,21 +92,23 @@ extension ToDoListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListTableViewCell
         
-        if let list = self.dataManager.loadList()?[indexPath.row] {
-            cell.titleLabel.text = list.title
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MM.dd HH:mm"
-            if let date = list.date {
-                cell.dateLabel.text = dateFormatter.string(from: date)
-            } else {
-                cell.dateLabel.text = ""
-            }
-        }
-        
-        
-        return cell
-    }
+        cell.isCompletedSwitch.tag = indexPath.row
+
+           if let list = self.dataManager.loadList()?[indexPath.row] {
+               cell.titleLabel.text = list.title
+               cell.isCompletedSwitch.isOn = list.isCompleted
+
+               let dateFormatter = DateFormatter()
+               dateFormatter.dateFormat = "MM.dd HH:mm"
+               if let date = list.date {
+                   cell.dateLabel.text = dateFormatter.string(from: date)
+               } else {
+                   cell.dateLabel.text = ""
+               }
+           }
+           return cell
+       }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alertController = UIAlertController(title: "수정", message: "항목 수정", preferredStyle: .alert)

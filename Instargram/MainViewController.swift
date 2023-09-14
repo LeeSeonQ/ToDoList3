@@ -59,7 +59,8 @@ class MainViewController: UIViewController {
         
         
         toDoListButton.addTarget(self, action: #selector(toDoListButtonTapped(_:)), for: .touchUpInside)
-        
+        completeButton.addTarget(self, action: #selector(completeButtonTapped(_:)), for:.touchUpInside)
+
         userNameLabel.snp.makeConstraints {
             $0.width.equalTo(view.frame.width * 0.4)
             $0.height.equalTo(44)
@@ -95,8 +96,8 @@ class MainViewController: UIViewController {
         
     
     
-    @objc func completeButtonTapped() {
-        
-        
+    @objc func completeButtonTapped(_ sender: UIButton) {
+        let completeListVC = CompleteListViewController()
+          self.navigationController?.pushViewController(completeListVC, animated: true)
     }
 }
