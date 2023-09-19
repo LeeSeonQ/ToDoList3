@@ -42,7 +42,7 @@ class ToDoListTableViewCell: UITableViewCell {
     func setUpUI() {
         
         addSubview(titleLabel)
-        contentView.addSubview(isCompletedSwitch) // 뷰 위치에따라서 버튼이 안눌림
+        contentView.addSubview(isCompletedSwitch)
         addSubview(dateLabel)
 
 

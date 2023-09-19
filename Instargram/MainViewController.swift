@@ -68,7 +68,7 @@ class MainViewController: UIViewController {
         toDoListButton.addTarget(self, action: #selector(toDoListButtonTapped(_:)), for: .touchUpInside)
         completeButton.addTarget(self, action: #selector(completeButtonTapped(_:)), for:.touchUpInside)
         catButton.addTarget(self, action: #selector(catButtonTapped(_:)), for:.touchUpInside)
-        profileViewButton.addTarget(self, action: #selector(profileViewButtonTapped(_:)), for:.touchUpInside)
+        profileViewButton.addTarget(self, action: #selector(profileDesignViewButtonTapped(_:)), for:.touchUpInside)
 
         toDoImage.snp.makeConstraints {
             $0.centerX.equalToSuperview()
@@ -116,10 +116,10 @@ class MainViewController: UIViewController {
           self.navigationController?.pushViewController(completeListVC, animated: true)
     }
     
-    @objc func profileViewButtonTapped(_ sender: UIButton) {
-        let profileVC = ProfileViewController()
-//        profileVC.modalPresentationStyle = .fullScreen
-        self.present(profileVC, animated: true)
+    @objc func profileDesignViewButtonTapped(_ sender: UIButton) {
+        let profileDesignVC = ProfileDesignViewController()
+        profileDesignVC.modalPresentationStyle = .fullScreen
+        self.present(profileDesignVC, animated: true)
     }
     
 }

@@ -25,9 +25,7 @@ struct CompleteList: Codable {
 
 struct Profile {
     var userAge: Int
-    var password: String
     var userName: String
-    var image: String
 }
 
 enum Section: String, CaseIterable {

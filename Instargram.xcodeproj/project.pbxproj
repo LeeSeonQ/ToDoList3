@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9B5FB4152AB7DE17000B98E7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FB4142AB7DE17000B98E7 /* ProfileViewController.swift */; };
+		9B5FB4152AB7DE17000B98E7 /* ProfileDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FB4142AB7DE17000B98E7 /* ProfileDesignViewController.swift */; };
+		9B5FB41C2AB93535000B98E7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FB41B2AB93535000B98E7 /* ProfileViewController.swift */; };
+		9B5FB41E2AB97201000B98E7 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FB41D2AB97201000B98E7 /* ViewModel.swift */; };
+		9B5FB4202AB973C4000B98E7 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5FB41F2AB973C4000B98E7 /* ImageCollectionViewCell.swift */; };
 		9B9F535C2AB05F5A00A56F89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F535B2AB05F5A00A56F89 /* AppDelegate.swift */; };
 		9B9F535E2AB05F5A00A56F89 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9F535D2AB05F5A00A56F89 /* SceneDelegate.swift */; };
 		9B9F53652AB05F5B00A56F89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B9F53642AB05F5B00A56F89 /* Assets.xcassets */; };
@@ -24,7 +27,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9B5FB4142AB7DE17000B98E7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9B5FB4142AB7DE17000B98E7 /* ProfileDesignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDesignViewController.swift; sourceTree = "<group>"; };
+		9B5FB41B2AB93535000B98E7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9B5FB41D2AB97201000B98E7 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9B5FB41F2AB973C4000B98E7 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B9F53582AB05F5A00A56F89 /* Instargram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instargram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B9F535B2AB05F5A00A56F89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B9F535D2AB05F5A00A56F89 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +59,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B5FB4212AB9BDE0000B98E7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9B9F537B2AB1447500A56F89 /* Model.swift */,
+				9B5FB41D2AB97201000B98E7 /* ViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9B5FB4222AB9C0E8000B98E7 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		9B5FB4232AB9C0F1000B98E7 /* ToDoListVC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ToDoListVC;
+			sourceTree = "<group>";
+		};
 		9B9F534F2AB05F5A00A56F89 = {
 			isa = PBXGroup;
 			children = (
@@ -75,13 +104,17 @@
 				9B9F535B2AB05F5A00A56F89 /* AppDelegate.swift */,
 				9B9F535D2AB05F5A00A56F89 /* SceneDelegate.swift */,
 				9B9F537F2AB1904800A56F89 /* DataManager.swift */,
-				9B9F537B2AB1447500A56F89 /* Model.swift */,
+				9B5FB4212AB9BDE0000B98E7 /* Models */,
 				9B9F53752AB0607A00A56F89 /* MainViewController.swift */,
 				9B9F53772AB0964B00A56F89 /* ToDoListViewController.swift */,
+				9B5FB4232AB9C0F1000B98E7 /* ToDoListVC */,
 				9B9F53792AB0966300A56F89 /* ToDoListTableViewCell.swift */,
 				9B9F53812AB1971D00A56F89 /* CompleteListViewController.swift */,
+				9B5FB4222AB9C0E8000B98E7 /* ProfileVC */,
 				9B9F53832AB1972E00A56F89 /* CompleteListTableViewCell.swift */,
-				9B5FB4142AB7DE17000B98E7 /* ProfileViewController.swift */,
+				9B5FB4142AB7DE17000B98E7 /* ProfileDesignViewController.swift */,
+				9B5FB41F2AB973C4000B98E7 /* ImageCollectionViewCell.swift */,
+				9B5FB41B2AB93535000B98E7 /* ProfileViewController.swift */,
 				9B9F53642AB05F5B00A56F89 /* Assets.xcassets */,
 				9B9F53662AB05F5B00A56F89 /* LaunchScreen.storyboard */,
 				9B9F53692AB05F5B00A56F89 /* Info.plist */,
@@ -169,13 +202,16 @@
 			files = (
 				9B9F53822AB1971D00A56F89 /* CompleteListViewController.swift in Sources */,
 				9B9F53782AB0964B00A56F89 /* ToDoListViewController.swift in Sources */,
-				9B5FB4152AB7DE17000B98E7 /* ProfileViewController.swift in Sources */,
+				9B5FB4202AB973C4000B98E7 /* ImageCollectionViewCell.swift in Sources */,
+				9B5FB4152AB7DE17000B98E7 /* ProfileDesignViewController.swift in Sources */,
 				9B9F53842AB1972E00A56F89 /* CompleteListTableViewCell.swift in Sources */,
 				9B9F535C2AB05F5A00A56F89 /* AppDelegate.swift in Sources */,
 				9B9F537A2AB0966300A56F89 /* ToDoListTableViewCell.swift in Sources */,
+				9B5FB41C2AB93535000B98E7 /* ProfileViewController.swift in Sources */,
 				9B9F537C2AB1447500A56F89 /* Model.swift in Sources */,
 				9B9F53802AB1904800A56F89 /* DataManager.swift in Sources */,
 				9B9F535E2AB05F5A00A56F89 /* SceneDelegate.swift in Sources */,
+				9B5FB41E2AB97201000B98E7 /* ViewModel.swift in Sources */,
 				9B9F53762AB0607A00A56F89 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
