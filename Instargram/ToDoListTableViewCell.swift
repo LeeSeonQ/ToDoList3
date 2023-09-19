@@ -12,6 +12,7 @@ import Then
 class ToDoListTableViewCell: UITableViewCell {
     static let identifier = "ToDoListCell"
     private let dataManager = DataManager.shared
+    var indexPath: IndexPath?
 
     let titleLabel = UILabel().then {
         $0.textColor = .black
@@ -19,6 +20,7 @@ class ToDoListTableViewCell: UITableViewCell {
     }
     let isCompletedSwitch = UISwitch().then{
         $0.isOn = false
+        $0.tag = 0
     }
     
     let dateLabel = UILabel().then {
@@ -66,26 +68,47 @@ class ToDoListTableViewCell: UITableViewCell {
 
     }
 
-    
     @objc func switchValueChanged(_ sender: UISwitch) {
         let isOn = sender.isOn
-        let indexPath = IndexPath(row: sender.tag, section: 0) // 스위치의 tag를 사용하여 indexPath를 구합니다.
         
-        if var list = self.dataManager.loadList()?[indexPath.row] {
-            list.isCompleted = isOn
-            self.dataManager.updateList(at: indexPath.row, with: list)
-            let completeList = CompleteList(title: list.title, date: list.date)
+        // indexPath를 사용하여 셀을 식별합니다.
+        if let indexPath = self.indexPath {
+            if var list = self.dataManager.loadList()?[indexPath.row] {
+                let section = Section.allCases[indexPath.section] // 해당 셀의 섹션을 가져옵니다.
+                
+                list.isCompleted = isOn
+                self.dataManager.updateList(at: indexPath.row, with: list)
+                let completeList = CompleteList(title: list.title, date: list.date, section: section.rawValue) // 섹션 정보를 CompleteList에 추가합니다.
 
-            if isOn {
-                // 스위치가 On 상태로 변경되면 완료 목록에 추가
-                self.dataManager.saveCompleteList(completeList)
-            } else {
-                // 스위치가 Off 상태로 변경되면 완료 목록에서 삭제
-                self.dataManager.deleteCompleteList(completeList)
+                if isOn {
+                    self.dataManager.saveCompleteList(completeList)
+                } else {
+                    self.dataManager.deleteCompleteList(completeList)
+                }
+                
+                print("스위치 값이 변경되었습니다. 새로운 값: \(isOn), 섹션: \(section.rawValue)")
             }
-            
-            print("스위치 값이 변경되었습니다. 새로운 값: \(isOn)")
         }
     }
-
+//    @objc func switchValueChanged(_ sender: UISwitch) {
+//        let isOn = sender.isOn
+//        if let indexPath = self.toDoListTableView.indexPath(for: self) {
+//            if var list = self.dataManager.loadList()?[indexPath.row] {
+//                list.isCompleted = isOn
+//                self.dataManager.updateList(at: indexPath.row, with: list)
+//                let completeList = CompleteList(title: list.title, date: list.date, section: Section.none.rawValue)
+//
+//                if isOn {
+//                    self.dataManager.saveCompleteList(completeList)
+//                } else {
+//                    self.dataManager.deleteCompleteList(completeList)
+//                }
+//                
+//                print("스위치 값이 변경되었습니다. 새로운 값: \(isOn)")
+//            }
+//        }
+//    }
+    
+    
+    
 }

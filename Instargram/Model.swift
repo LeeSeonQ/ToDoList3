@@ -6,24 +6,32 @@
 //
 
 
-import UIKit
+import Foundation
 
-struct List: Codable {
+struct List: Codable{
     var id: UUID = UUID()
     var title: String
     var date: Date?
     var isCompleted: Bool
+    var section: String
 }
 
 struct CompleteList: Codable {
     var title: String
     var date: Date?
+    var section: String
+
 }
 
-struct Profile: Codable {
+struct Profile {
     var userAge: Int
     var password: String
-    var nickName: String
+    var userName: String
     var image: String
 }
 
+enum Section: String, CaseIterable {
+    case none = "None"
+    case study = "Study"
+    case hobby = "Hobby"
+}
