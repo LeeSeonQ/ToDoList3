@@ -13,11 +13,12 @@ class MainViewController: UIViewController {
     
     
     private let catButton = UIButton (type: .system).then{
-        $0.setTitle("야옹", for: .normal)
+        $0.setTitle("오픈api 미구현", for: .normal)
         $0.tintColor = .black
         $0.backgroundColor = .white
         $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.layer.borderWidth = 1.0
+        $0.isEnabled = false
     }
 
     private let toDoImage = UIImageView(image: UIImage(named: "CheckBox")) .then{
